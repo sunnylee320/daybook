@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Buyday:</strong>
+  <%= @cost.buyday %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @cost.item %>
+</p>
+
+<p>
+  <strong>Spendmoney:</strong>
+  <%= @cost.spendmoney %>
+</p>
+
+<%= link_to 'Edit', edit_cost_path(@cost) %> |
+<%= link_to 'Back', costs_path %>

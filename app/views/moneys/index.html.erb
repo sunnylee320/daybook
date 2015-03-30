@@ -1,0 +1,9 @@
+<h1>新增消費記錄</h1>
+<%= simple_form_for(@money) do |f| %>
+<%= f.date_select :buyday,label:'日期' %>
+<%= f.input :item, label:'項目' %>
+
+<br>
+
+
+<%= link_to '顯示消費紀錄', moneys_path %>

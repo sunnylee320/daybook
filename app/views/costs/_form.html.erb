@@ -1,0 +1,13 @@
+<%= simple_form_for(@cost) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="field">
+    <%= f.input :buyday ,label:'日期'%><br>
+    <%= f.input :item ,label: '項目' %><br>
+    <%= f.input :spendmoney,label: '金額' %><br>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, "確認送出", class:"btn btn-success btn-lg" %>
+  </div>
+<% end %>
