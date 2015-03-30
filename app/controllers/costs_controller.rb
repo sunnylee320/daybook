@@ -7,8 +7,13 @@ class CostsController < ApplicationController
     @costs = Cost.all
     @grouped_months = @costs.group_by { |r| r.buyday.beginning_of_month}
     @grouped_totals = @costs.group_by { |r| r.buyday.beginning_of_month}
-    #@march_costs = Cost.where(['buyday like ?','2015-03%']).order('buyday desc')
+    @march_costs = Cost.where(['buyday like ?','2015-03%']).order('buyday desc')
     @march_total = Cost.where(['buyday like ?','2015-03%']).sum(:spendmoney)
+    @april_costs = Cost.where(['buyday like ?','2015-04%']).order('buyday desc')
+    @april_total = Cost.where(['buyday like ?','2015-04%']).sum(:spendmoney)
+    @may_costs = Cost.where(['buyday like ?','2015-05%']).order('buyday desc')
+    @may_total = Cost.where(['buyday like ?','2015-05%']).sum(:spendmoney)
+    
   end
 
   # GET /costs/1
