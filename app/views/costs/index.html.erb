@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Costs</h1>
-<h2>3月</h2>
+<% @grouped_months.keys.sort.each do |month| %>  
+<h2><%= month.strftime("%B %Y") %></h2>  
 <table class='table table-hover'>
   <thead>
     <tr>
@@ -12,73 +13,21 @@
     </tr>
   </thead>
   <tbody>
-    <% @march_costs.each do |cost3| %>
-      <tr>
-        <td><%= cost3.buyday %></td>
-        <td><%= cost3.item %></td>
-        <td><%= cost3.spendmoney %></td>
-        <td><%= link_to 'Edit', edit_cost_path(cost3) %></td>
-        <td><%= link_to 'Destroy', cost3, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <% for cost in @grouped_months[month] %>  
+     <tr>
+        <td><%= cost.buyday %></td>
+        <td><%= cost.item %></td>
+        <td><%= cost.spendmoney.to_s(:long) %></td>
+        <td><%= link_to 'Edit', edit_cost_path(cost) %></td>
+        <td><%= link_to 'Destroy', cost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+  <% end %> 
   </tbody>
   <tr>
     <td colspan="2" style="text-align:right;">總計</td>
-    <td><%= @march_total %></td>
+    <td><%= @grouped_totals %></td>
   </tr>
 </table>
+<% end %>
 
-<h2>4月</h2>
-<table class='table table-hover'>
-  <thead>
-    <tr>
-      <th>日期</th>
-      <th>項目</th>
-      <th>金額</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @april_costs.each do |cost4| %>
-      <tr>
-        <td><%= cost4.buyday %></td>
-        <td><%= cost4.item %></td>
-        <td><%= cost4.spendmoney %></td>
-        <td><%= link_to 'Edit', edit_cost_path(cost4) %></td>
-        <td><%= link_to 'Destroy', cost4, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-  <tr>
-    <td colspan="2" style="text-align:right;">總計</td>
-    <td><%= @april_total %></td>
-  </tr>
-</table>
-
-<h2>5月</h2>
-<table class='table table-hover'>
-  <thead>
-    <tr>
-      <th>日期</th>
-      <th>項目</th>
-      <th>金額</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @may_costs.each do |cost5| %>
-      <tr>
-        <td><%= cost5.buyday %></td>
-        <td><%= cost5.item %></td>
-        <td><%= cost5.spendmoney %></td>
-        <td><%= link_to 'Edit', edit_cost_path(cost5) %></td>
-        <td><%= link_to 'Destroy', cost5, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-  <tr>
-    <td colspan="2" style="text-align:right;">總計</td>
-    <td><%= @may_total %></td>
-  </tr>
-</table>
 <%= link_to '新增記錄', new_cost_path , class:'btn btn-success btn-lg'%>
