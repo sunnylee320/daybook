@@ -6,7 +6,7 @@ class CostsController < ApplicationController
   def index
     @costs = Cost.all
     @grouped_months = @costs.group_by { |r| r.buyday.beginning_of_month}
-    @grouped_totals = @costs.group_by { |r| r.buyday.beginning_of_month}
+    @grouped_totals = @costs.sum(:spendmoney)
     
     @march_costs = Cost.where(['buyday like ?','2015-03%']).order('buyday desc')
     @march_total = Cost.where(['buyday like ?','2015-03%']).sum(:spendmoney)
