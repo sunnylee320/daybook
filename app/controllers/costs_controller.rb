@@ -40,7 +40,7 @@ class CostsController < ApplicationController
 
     respond_to do |format|
       if @cost.save
-        format.html { redirect_to :index, notice: 'Cost was successfully created.' }
+        format.html { render :index, notice: 'Cost was successfully created.' }
         #format.json { render :show, status: :created, location: @cost }
       else
         format.html { render :new }
