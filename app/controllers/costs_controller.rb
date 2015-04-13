@@ -7,14 +7,16 @@ class CostsController < ApplicationController
     @costs = Cost.all
     @grouped_months = @costs.group_by { |r| r.buyday.beginning_of_month}
     @grouped_totals = @costs.sum(:spendmoney)
-    
+   
     @march_costs = Cost.where(['buyday between ? and ?','2015-03-01','2015-03-31' ]).order('buyday desc')
     @march_total = Cost.where(["date_part('month',buyday) = ?" ,3]).sum(:spendmoney)
-    #@april_costs = Cost.where(['buyday like ?','2015-04%']).order('buyday desc')
-    #@april_total = Cost.where(['buyday like ?','2015-04%']).sum(:spendmoney)
-    #@may_costs = Cost.where(['buyday like ?','2015-05%']).order('buyday desc')
-    #@may_total = Cost.where(['buyday like ?','2015-05%']).sum(:spendmoney)
-    
+    @month_num = ['1','2','3','4','5','6','7','8','9','10','11','12']
+    @month_details = []
+    @month_costs = []
+     (0..11).each do |i|
+       @month_details[i] = Cost.where(["date_part('month',buyday) = ? and date_part('year',buyday) = ?" , @month_num[i],2015]).order('buyday desc')
+       @month_costs[i] = Cost.where(["date_part('month',buyday) = ? and date_part('year',buyday) = ?" , @month_num[i],2015]).sum(:spendmoney)
+     end
   end
 
   # GET /costs/1
