@@ -9,7 +9,7 @@
         <li role="presentation"><a href="#<%= @month_num[i] %>" role="tab" data-toggle="tab"><%= @month_num[i] %>月</a></li>
     <% end %>
   </ul>
-  <div role="tab-content">
+  <div class="tab-content">
     <% (0..11).each do |i| %>
     <div role="tabpanel" class="tab-pane" id="<%= @month_num[i] %>">
     <h2><%= i+1 %>月</h2>
