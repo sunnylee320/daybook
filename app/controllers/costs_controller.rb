@@ -40,8 +40,8 @@ class CostsController < ApplicationController
 
     respond_to do |format|
       if @cost.save
-        format.html { redirect_to @cost, notice: 'Cost was successfully created.' }
-        format.json { render :show, status: :created, location: @cost }
+        format.html { redirect_to :index, notice: 'Cost was successfully created.' }
+        #format.json { render :show, status: :created, location: @cost }
       else
         format.html { render :new }
         format.json { render json: @cost.errors, status: :unprocessable_entity }
