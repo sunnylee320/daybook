@@ -5,6 +5,7 @@
 
 <div role="tabpanel">
   <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation"><a href="#1" role="tab" data-toggle="tab">1月</a></li>
     <% (0..11).each do |i| %>
         <li role="presentation"><a href="#<%= @month_num[i] %>" role="tab" data-toggle="tab"><%= @month_num[i] %>月</a></li>
     <% end %>
