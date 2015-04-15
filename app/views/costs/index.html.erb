@@ -2,12 +2,14 @@
 
 <h1>Listing Costs</h1>
 <%= link_to '新增記錄', new_cost_path , class:'btn btn-success btn-lg'%>
-<script>
-$(document).ready(function(){
-  $($('.nav li')[<%= params[:tab] %>]).find('a').tab('show')
-});
-</script>
 
+<div role="tabpanel">
+  <ul class="nav nav-tabs" role="tablist">
+    <% (0..11).each do |i| %>
+        <li role="presentation"><a href="#<%= @month_num[i] %>" role="tab" data-toggle="tab"><%= @month_num[i] %>月</a></li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
 <% (0..11).each do |i| %>
   <div role="tabpanel" class="tab-pane" id="<%= @month_num[i] %>">
     <h2><%= i+1 %>月</h2>
@@ -38,6 +40,8 @@ $(document).ready(function(){
     </table>
   </div>
 <% end %>
+</div>
+</div>
 
 
 
