@@ -8,8 +8,8 @@ $(document).ready(function(){
 });
 </script>
 
-    <% (0..11).each do |i| %>
-    <div role="tabpanel" class="tab-pane" id="<%= @month_num[i] %>">
+<% (0..11).each do |i| %>
+  <div role="tabpanel" class="tab-pane" id="<%= @month_num[i] %>">
     <h2><%= i+1 %>月</h2>
     <table class='table table-hover'>
       <thead>
@@ -30,17 +30,16 @@ $(document).ready(function(){
             <td><%= link_to 'Destroy', cost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %> 
-        </tbody>
-          <tr>
-            <td colspan="2" style="text-align:right;">總計</td>
-            <td><%= @month_costs[i] %></td>
-          </tr>
+      </tbody>
+        <tr>
+          <td colspan="2" style="text-align:right;">總計</td>
+          <td><%= @month_costs[i] %></td>
+        </tr>
     </table>
   </div>
-  <% end %>
-  </div>
-</div>
-
 <% end %>
+
+
+
 
 
