@@ -40,7 +40,7 @@ class CostsController < ApplicationController
     @cost = Cost.new(cost_params)
 
     respond_to do |format|
-      if @cost
+      if @cost.save
        
         format.html { redirect_to  action: :index, tab: @cost.buyday.strftime("%m").to_i-1, notice: 'Cost was successfully created.' }
         #format.html { redirect_to costs_path, notice: 'Cost was successfully created.'}
