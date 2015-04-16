@@ -44,7 +44,7 @@ class CostsController < ApplicationController
        
         format.html { redirect_to  action: :index, tab: @cost.buyday.strftime("%m").to_i-1, notice: 'Cost was successfully created.' }
         #format.html { redirect_to costs_path, notice: 'Cost was successfully created.'}
-       
+        # render :text => params[:cost]
         #format.json { render :show, status: :created, location: @cost }
       else
         format.html { render :new }
@@ -58,8 +58,8 @@ class CostsController < ApplicationController
   def update
     respond_to do |format|
       if @cost.update(cost_params)
-        format.html { redirect_to  action: :index, tab: @cost.buyday.strftime("%m").to_i-1, notice: 'Cost was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @cost }
+        format.html { redirect_to @cost, notice: 'Cost was successfully updated.' }
+        format.json { render :show, status: :ok, location: @cost }
       else
         format.html { render :edit }
         format.json { render json: @cost.errors, status: :unprocessable_entity }
