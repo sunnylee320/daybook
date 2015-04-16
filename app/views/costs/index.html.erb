@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<script>
+$(document).ready(function(){
+  $($('.nav li')[<%= @tab %>]).find('a').tab('show')
+});
+</script>
 <h1>Listing Costs</h1>
 <%= link_to '新增記錄', new_cost_path , class:'btn btn-success btn-lg'%>
 

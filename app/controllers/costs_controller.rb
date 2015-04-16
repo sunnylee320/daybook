@@ -4,6 +4,7 @@ class CostsController < ApplicationController
   # GET /costs
   # GET /costs.json
   def index
+    @tab = params[:tab]
     @costs = Cost.all
     @grouped_months = @costs.group_by { |r| r.buyday.beginning_of_month}
     @grouped_totals = @costs.sum(:spendmoney)
@@ -41,9 +42,9 @@ class CostsController < ApplicationController
     respond_to do |format|
       if @cost.save
         #@new_num = params[:cost.buyday]
-        #format.html { redirect_to  action::index, tab: 4, notice: 'Cost was successfully created.' }
+        format.html { redirect_to  action::index, tab: 4, notice: 'Cost was successfully created.' }
         #format.html { redirect_to costs_path, notice: 'Cost was successfully created.'}
-         render :text => params[:cost]
+        # render :text => params[:cost]
         #format.json { render :show, status: :created, location: @cost }
       else
         format.html { render :new }
