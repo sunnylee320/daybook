@@ -40,9 +40,9 @@ class CostsController < ApplicationController
     @cost = Cost.new(cost_params)
 
     respond_to do |format|
-      if @cost.save
+      if @cost
         #@new_num = params[:cost.buyday]
-        format.html { redirect_to  action::index, tab: 4, notice: 'Cost was successfully created.' }
+        format.html { redirect_to  action: :index, tab: @cost.buyday.strftime("%m").to_i-1, notice: 'Cost was successfully created.' }
         #format.html { redirect_to costs_path, notice: 'Cost was successfully created.'}
         # render :text => params[:cost]
         #format.json { render :show, status: :created, location: @cost }
